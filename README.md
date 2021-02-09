@@ -17,7 +17,7 @@ Specifically, it implements the “Problem Details” specification from
 [RFC 7807](https://tools.ietf.org/html/rfc7807), which is an emerging
 standard for errors supported by many other languages and tools.
 
-Although **httpproblems** orginated for use with
+Although **httpproblems** originated for use with
 [Plumber](https://www.rplumber.io) (see below), it has no dependencies
 of its own and can be used with any R web framework.
 
