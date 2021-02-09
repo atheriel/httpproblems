@@ -185,6 +185,9 @@ $ curl -vs localhost:4444/bug
 }
 ```
 
+You may also wish to use `not_found()` for Plumber’s 404 handler via
+`pr_set_404()`.
+
 ## License
 
 Copyright 2021 Aaron Jacobs
