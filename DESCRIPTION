@@ -1,0 +1,14 @@
+Package: httpproblems
+Title: Report Errors in Web Applications with 'Problem Details' (RFC 7807)
+Version: 0.0.0.9000
+Authors@R: 
+    c(person(given = "Aaron", family = "Jacobs", role = c("aut", "cre"),
+             email = "atheriel@gmail.com"))
+Description: Tools for emitting the 'Problem Details' structure defined in
+  'RFC' 7807 <https://tools.ietf.org/html/rfc7807> for reporting errors from
+  'HTTP' servers in a standard way.
+License: Apache License (>= 2)
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
