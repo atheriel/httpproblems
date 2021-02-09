@@ -33,11 +33,16 @@
 #' @param title A ["short, human-readable summary of the problem type"](https://tools.ietf.org/html/rfc7807#section-3.1).
 #'   When `NULL`, the title is generated based on the status code; see
 #'   [http_problem_types()] for a list of the defaults.
+#' @param instance A URL that identifies the specific occurrence of the
+#'   problem, if possible. When `NULL` this field is simply excluded.
 #' @param ... Additional fields added to the problem as [Extension Members](https://tools.ietf.org/html/rfc7807#section-3.2).
 #'
 #' @return An object of class `"http_problem"`, which has fields corresponding
 #'   to [an RFC 7807 Problem Details structure](https://tools.ietf.org/html/rfc7807#section-3.1).
 #'
+#' @examples
+#' body <- bad_request("Parameter 'id' must be a number.")
+#' str(body)
 #' @seealso [stop_for_http_problem] for issuing R errors with these structures.
 #' @export
 http_problem <- function(detail = NULL, status = 500L, type = NULL,
@@ -136,6 +141,13 @@ internal_server_error <- function(detail = NULL, instance = NULL, ...) {
 #' @return These functions call `stop()` with a custom [condition] (with class
 #'   `"http_problem_error"`), so they do not return a value.
 #'
+#' @examples
+#' tryCatch(
+#'   stop_for_bad_request("Parameter 'id' must be a number."),
+#'   error = function(e) {
+#'     str(e)
+#'   }
+#' )
 #' @inheritParams http_problem
 #' @seealso [http_problem] for creating the structure directly.
 #' @export

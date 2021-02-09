@@ -45,6 +45,9 @@ problem. When \code{NULL}, the type is generated based on the status code; see
 When \code{NULL}, the title is generated based on the status code; see
 \code{\link[=http_problem_types]{http_problem_types()}} for a list of the defaults.}
 
+\item{instance}{A URL that identifies the specific occurrence of the
+problem, if possible. When \code{NULL} this field is simply excluded.}
+
 \item{...}{Additional fields added to the problem as \href{https://tools.ietf.org/html/rfc7807#section-3.2}{Extension Members}.}
 }
 \value{
@@ -59,6 +62,10 @@ from HTTP APIs in a standard way.
 There are also helper methods for the most common HTTP problems:
 HTTP 400 Bad Request, 404 Not Found, 401 Unauthorized, 403 Forbidden, 409
 Conflict, and 500 Internal Server Error.
+}
+\examples{
+body <- bad_request("Parameter 'id' must be a number.")
+str(body)
 }
 \seealso{
 \link{stop_for_http_problem} for issuing R errors with these structures.
