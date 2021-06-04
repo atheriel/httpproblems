@@ -1,3 +1,8 @@
+# httpproblems 1.0.0.9000
+
+* Removes the `LazyData` field from the `DESCRIPTION` file, which was generating
+  a NOTE in CRAN's automated checking.
+
 # httpproblems 1.0.0
 
 * Initial release. **httpproblems** provides tools for emitting the "Problem
