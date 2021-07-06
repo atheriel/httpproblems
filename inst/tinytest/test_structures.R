@@ -25,6 +25,12 @@ out <- http_problem(random_code = 46L)
 expect_http_problem(out)
 expect_equal(out$random_code, 46L)
 
+# Test that invalid input generates errors.
+expect_error(http_problem(detail = 42), "'detail' must be a string")
+expect_error(http_problem(instance = 42), "'instance' must be a string")
+expect_error(http_problem(status = "none"), "'status' must be an HTTP status")
+expect_error(http_problem(status = 499), "Unsupported HTTP status code")
+
 # Test that http_problem helpers work as expected.
 expect_http_problem(bad_request(), 400L)
 expect_http_problem(unauthorized(), 401L)

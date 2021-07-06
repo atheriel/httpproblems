@@ -47,8 +47,21 @@
 #' @export
 http_problem <- function(detail = NULL, status = 500L, type = NULL,
                          title = NULL, instance = NULL, ...) {
-  stopifnot(is.null(detail) || is.character(detail) || length(detail) != 1)
-  stopifnot(is.null(instance) || is.character(instance) || length(instance) != 1)
+  if (!is.null(detail) && !is.character(detail)) {
+    stop(
+      sprintf("'detail' must be a string or omitted, not '%s'.", detail),
+      call. = FALSE
+    )
+  }
+  if (!is.null(instance) && !is.character(instance)) {
+    stop(
+      sprintf("'instance' must be a string or omitted, not '%s'.", instance),
+      call. = FALSE
+    )
+  }
+  if (!is.numeric(status)) {
+    stop("'status' must be an HTTP status code, not '%s'.", call. = FALSE)
+  }
   status_index <- which(status == http_problem_codes$code)
   if (length(status_index) == 0) {
     # NOTE: It's possible that we could allow arbitrary codes and just set
