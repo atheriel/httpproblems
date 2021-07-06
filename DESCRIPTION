@@ -8,8 +8,7 @@ Description: Tools for emitting the 'Problem Details' structure defined in
   'RFC' 7807 <https://tools.ietf.org/html/rfc7807> for reporting errors from
   'HTTP' servers in a standard way.
 License: Apache License (>= 2)
-Suggests:
-  testthat
+Suggests: tinytest
 URL: https://github.com/atheriel/httpproblems
 BugReports: https://github.com/atheriel/httpproblems/issues
 Encoding: UTF-8
