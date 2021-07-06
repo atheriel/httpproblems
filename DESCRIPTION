@@ -1,6 +1,6 @@
 Package: httpproblems
 Title: Report Errors in Web Applications with 'Problem Details' (RFC 7807)
-Version: 1.0.1
+Version: 1.0.1.9000
 Authors@R: 
     c(person(given = "Aaron", family = "Jacobs", role = c("aut", "cre"),
              email = "atheriel@gmail.com"))
