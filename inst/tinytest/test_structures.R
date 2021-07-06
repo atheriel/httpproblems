@@ -31,6 +31,27 @@ expect_error(http_problem(instance = 42), "'instance' must be a string")
 expect_error(http_problem(status = "none"), "'status' must be an HTTP status")
 expect_error(http_problem(status = 499), "Unsupported HTTP status code")
 
+# Test that vector arguments are ignored for built-in fields.
+out <- http_problem(
+  detail = c("Unknown", "Known"),
+  instance = c("/widgets/101", "/widgets/102", "/widgets/103"),
+  status = c(404, 410)
+)
+expect_http_problem(out, 404L)
+expect_equal(length(out$detail), 1L)
+expect_equal(length(out$instance), 1L)
+expect_equal(length(out$title), 1L)
+expect_equal(length(out$type), 1L)
+out <- http_problem(
+  title = c("Too", "Long"),
+  type = c("about:this", "about:that"),
+  custom = 1:3
+)
+expect_http_problem(out)
+expect_equal(length(out$title), 1L)
+expect_equal(length(out$type), 1L)
+expect_equal(length(out$custom), 3L)
+
 # Test that http_problem helpers work as expected.
 expect_http_problem(bad_request(), 400L)
 expect_http_problem(unauthorized(), 401L)

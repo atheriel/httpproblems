@@ -62,6 +62,8 @@ http_problem <- function(detail = NULL, status = 500L, type = NULL,
   if (!is.numeric(status)) {
     stop("'status' must be an HTTP status code, not '%s'.", call. = FALSE)
   }
+  # Ignore vector arguments.
+  status <- as.integer(status[1L])
   status_index <- which(status == http_problem_codes$code)
   if (length(status_index) == 0) {
     # NOTE: It's possible that we could allow arbitrary codes and just set
@@ -76,10 +78,10 @@ http_problem <- function(detail = NULL, status = 500L, type = NULL,
   if (is.null(type)) {
     type <- http_problem_codes$url[status_index]
   }
-  body <- list(type = type, title = title, status = as.integer(status), ...)
+  body <- list(type = type[1L], title = title[1L], status = status, ...)
   # Only included optional fields if they are non-NULL.
-  body$detail <- detail
-  body$instance <- instance
+  body$detail <- detail[1L]
+  body$instance <- instance[1L]
   structure(body, class = c("http_problem", "list"))
 }
 
